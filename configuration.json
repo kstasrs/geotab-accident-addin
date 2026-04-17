@@ -4,7 +4,7 @@
     "version": "1.0.0",
     "items": [
         {
-            "url": "https://kstasrs.github.io/geotab-accident-addin/accidentPackage.html?v=4",
+            "url": "https://kstasrs.github.io/geotab-accident-addin/accidentPackage.html?v=5",
             "path": "SafetyLink/",
             "menuName": {
                 "en": "Accident Data Package"

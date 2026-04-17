@@ -29,6 +29,43 @@
             <button id="apkg-alert-close" class="apkg-alert-close">&times;</button>
         </div>
 
+        <!-- Quick-start guide (collapsible) -->
+        <div class="apkg-card apkg-guide">
+            <div class="apkg-guide-header" id="apkg-guide-toggle">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                <span class="apkg-guide-title">How to Use This Tool</span>
+                <span class="apkg-guide-chevron" id="apkg-guide-chevron">&#9654;</span>
+            </div>
+            <div id="apkg-guide-body" class="apkg-guide-body" style="display:none;">
+                <div class="apkg-guide-steps">
+                    <div class="apkg-guide-step">
+                        <div class="apkg-guide-step-num">1</div>
+                        <div>
+                            <strong>Enter search criteria</strong>
+                            <p>Type a vehicle name or driver name (auto-complete will suggest matches). Set the date/time of the incident. You can leave fields blank &mdash; the tool discovers related data automatically.</p>
+                        </div>
+                    </div>
+                    <div class="apkg-guide-step">
+                        <div class="apkg-guide-step-num">2</div>
+                        <div>
+                            <strong>Generate the package</strong>
+                            <p>Click <em>Generate Package</em>. The tool collects GPS logs, trips, safety events, accelerometer/collision data, fault codes, HOS/ELD, DVIR inspections, diagnostics, messages, and camera footage in one batch.</p>
+                        </div>
+                    </div>
+                    <div class="apkg-guide-step">
+                        <div class="apkg-guide-step-num">3</div>
+                        <div>
+                            <strong>Review &amp; download</strong>
+                            <p>Browse results in the tabbed report. Download everything as an <strong>Excel workbook</strong> (multi-sheet) or <strong>CSV ZIP</strong> for upload to claim systems. Use the <em>Media</em> tab to download dash-cam videos.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="apkg-guide-tip">
+                    <strong>Tip:</strong> If you know the exact incident time, enter it with &plusmn; minutes to narrow the data window. Otherwise, use a full date range to capture everything.
+                </div>
+            </div>
+        </div>
+
         <!-- Input form -->
         <div class="apkg-card">
             <h2 class="apkg-card-title">Search Criteria</h2>
@@ -36,29 +73,35 @@
             <div class="apkg-form-grid">
                 <div class="apkg-field">
                     <label for="apkg-unit">Unit / Vehicle <span class="apkg-optional">(optional)</span></label>
-                    <input type="text" id="apkg-unit" placeholder="e.g. UNIT-1234" autocomplete="off" />
+                    <input type="text" id="apkg-unit" placeholder="Start typing unit name or serial #" autocomplete="off" />
                     <div id="apkg-unit-suggestions" class="apkg-suggestions"></div>
+                    <span class="apkg-field-desc">Vehicle name, serial number, or VIN. Auto-complete will suggest matches.</span>
                 </div>
                 <div class="apkg-field">
                     <label for="apkg-driver">Driver <span class="apkg-optional">(optional)</span></label>
-                    <input type="text" id="apkg-driver" placeholder="e.g. John Smith" autocomplete="off" />
+                    <input type="text" id="apkg-driver" placeholder="Start typing driver name" autocomplete="off" />
                     <div id="apkg-driver-suggestions" class="apkg-suggestions"></div>
+                    <span class="apkg-field-desc">Driver first or last name. If omitted, drivers are discovered from trip data.</span>
                 </div>
                 <div class="apkg-field">
-                    <label for="apkg-date">Start Date</label>
+                    <label for="apkg-date">Start Date <span class="apkg-required">*</span></label>
                     <input type="date" id="apkg-date" />
+                    <span class="apkg-field-desc">Required. The beginning of the search window (UTC).</span>
                 </div>
                 <div class="apkg-field">
                     <label for="apkg-end-date">End Date <span class="apkg-optional">(optional)</span></label>
                     <input type="date" id="apkg-end-date" />
+                    <span class="apkg-field-desc">Defaults to Start Date if left blank. Ignored when Incident Time is set.</span>
                 </div>
                 <div class="apkg-field">
                     <label for="apkg-time">Incident Time <span class="apkg-optional">(optional)</span></label>
                     <input type="time" id="apkg-time" />
+                    <span class="apkg-field-desc">Exact time of incident. Creates a &plusmn; window around this time.</span>
                 </div>
                 <div class="apkg-field">
                     <label for="apkg-window">Window &plusmn; minutes</label>
                     <input type="number" id="apkg-window" value="30" min="5" max="120" />
+                    <span class="apkg-field-desc">Minutes before &amp; after incident time to collect data (5&ndash;120).</span>
                 </div>
                 <div class="apkg-field apkg-field-actions">
                     <label>&nbsp;</label>
