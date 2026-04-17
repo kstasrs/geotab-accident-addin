@@ -1,10 +1,10 @@
 {
     "name": "Accident Data Package",
     "supportEmail": "support@yourcompany.com",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "items": [
         {
-            "url": "https://kstasrs.github.io/geotab-accident-addin/accidentPackage.html?v=5",
+            "url": "https://kstasrs.github.io/geotab-accident-addin/accidentPackage.html?v=6",
             "path": "SafetyLink/",
             "menuName": {
                 "en": "Accident Data Package"
